@@ -1,6 +1,0 @@
-<launch>
-    <node name="costmap_node" pkg="costmap_2d" type="costmap_2d_node" output="screen" >
-      <rosparam file="$(find qbo_2dnav)/local_costmap_params.yaml" command="load" ns="costmap"/>
-      <rosparam file="$(find qbo_2dnav)/costmap_common_params.yaml" command="load" ns="costmap"/>
-    </node>
-</launch>

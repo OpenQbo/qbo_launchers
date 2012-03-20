@@ -1,8 +1,0 @@
-<launch>
-  <master auto="start" />
-
-  <include file="$(find qbo_arduqbo)/launch/qbo.launch" />
-  <include file="$(find usb_camera)/launch/usb_cameras.launch" />
-  <node pkg="qbo_pseudo_laser" name="qbo_pseudo_laser" type="qboduino_pseudo_laser" output="screen"/>
-
-</launch>

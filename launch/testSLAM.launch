@@ -1,4 +1,0 @@
-<launch>
-  <include file="$(find qbo_launchers)/launch/base_and_cameras.launch" />
-  <node name="record_slam" pkg="record_slam" type="record_slam" output="screen" />
-</launch>
