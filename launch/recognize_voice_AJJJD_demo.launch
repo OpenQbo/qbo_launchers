@@ -1,0 +1,43 @@
+<launch>
+  <node name="qbo_arduqbo" pkg="qbo_arduqbo" type="qbo_arduqbo" output="screen">
+      <rosparam file="$(find qbo_arduqbo)/default.yaml" command="load" />
+  </node>
+
+    <node name="monocular" ns="/" pkg="usb_camera" type="gsusb_camera" output="screen" >
+	        <param name="image_width" value="320" />
+			        <param name="image_height" value="240" />
+					        <param name="video_device" value="/dev/video0" />
+							        <param name="camera_frame_id" value="monocular_camera_frame" />
+									        <param name="camera_name" value="monocular_camera" />
+											        <param name="camera_calibration_file_name" value="$(env HOME)/.QBOConfig/calibration/monocular_calibration.yml" />
+													    </node>
+														    <node name="image_proc" ns="monocular" pkg="image_proc" type="image_proc" output="screen" >
+															    </node>
+
+	 <node name="face_tracking" pkg="face_tracking" type="face_tracking" output="screen">
+	 </node>
+     <node name="face_following" pkg="face_following" type="face_following" output="screen">
+     </node>
+     
+     <node name="face_recognizer" pkg="new_face_recognition" type="face_recognizer" output="screen" 
+     args="/home/qbobot/record_faces/imgs_8/ /home/qbobot/pca_stores/img_8_pca.yml" >
+     </node>
+     
+      <node name="festival_node" pkg="qbo_talk" type="festival_node.py" output="screen" >
+     </node>
+     
+     <node name="command_voice" pkg="command_voice" type="command_voice" output="screen" >
+     </node>
+     
+    <node name="image_viewer" pkg="qbo_image_viewer" type="image_viewer" 
+     args="/Qbo/FaceDetector/Viewer" >
+     </node>
+     
+     
+     
+     
+
+    
+
+
+</launch>

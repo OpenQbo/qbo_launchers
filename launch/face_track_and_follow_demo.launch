@@ -1,0 +1,8 @@
+<launch>
+	 <node name="face_tracking" pkg="face_tracking" type="face_tracking" output="screen">
+	 </node>
+     <node name="face_following" pkg="face_following" type="face_following" output="screen">
+     </node>
+	<param name="/face_following/move_base" value="true"/>
+</launch>
+

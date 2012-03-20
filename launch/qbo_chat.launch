@@ -1,0 +1,8 @@
+<launch>
+	<group ns="qbo_base">
+	       <node pkg="qbo_chatterbot" name="chatterbot_node" type="chatterbot_node.py" output="screen"/>
+	       <node pkg="qbo_talk" name="festival_node" type="festival_node.py" output="screen"/>
+	       <node pkg="qbo_listen" name="julius_node" type="julius_node.py" output="screen"/>
+	       <node pkg="qbo_conversation" name="conversation_node" type="conversation_node" output="screen"/>
+	</group>
+</launch>

@@ -1,0 +1,16 @@
+<launch>
+    <master auto="start" />
+    <include file="$(find qbo_arduqbo)/launch/qbo_with_sensors.launch" /> 
+<!--    <include file="$(find usb_camera)/launch/usb_cameras.launch" />  -->
+    <include file="$(find uvc_camera)/launch/stereo_node.launch" />
+    <include file="$(find qbo_listen)/launch/voice_recognizer.launch" />
+    <node pkg="qbo_talk" name="qbo_talk" type="festival_node.py" output="screen"/> 
+    <node pkg="qbo_brain"  name="qbo_brain"      type="qbo_brain.py" output="screen" />  
+<!--    <node pkg="qbo_state_machine"  name="smach_machine.py"      type="smach_machine.py"                                output="screen"/>  -->
+<!--    <node pkg="qbo_http_api_login" name="qbo_http_api_login.py" type="qbo_http_api_login.py"                           output="screen"/> -->
+<!--    <node pkg="qbo_listen"         name="qbo_listen"            type="qbo_listen"                                      output="screen"/> -->
+<!--    <node pkg="qbo_web_api"        name="qbo_web_api"           type="qbo_web_api.py"                                  output="screen"/> -->
+<!--    <node pkg="stereo_anaglyph"    name="stereo_anaglyph"       type="red_cyan_anaglyph.py" args="-c /stereo -d 20 -s" output="screen"/>  -->
+	
+    <!-- <include file="$(find qbo_launchers)/launch/android_demo.launch" /> -->
+</launch>

@@ -1,0 +1,11 @@
+<launch>
+  <include file="$(find qbo_arduqbo)/launch/qbo.launch" />
+  <include file="$(find usb_camera)/launch/usb_camera.launch" />
+
+	 <node name="face_tracking" pkg="face_tracking" type="face_tracking" output="screen">
+	 </node>
+   <node name="face_following" pkg="face_following" type="face_following" output="screen">
+   </node>
+
+</launch>
+

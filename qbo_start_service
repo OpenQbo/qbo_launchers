@@ -1,0 +1,59 @@
+#! /bin/bash
+#
+
+# Some things that run always
+source /opt/ros/electric/setup.bash
+export ROS_HOSTNAME=`/bin/hostname`.local
+export QBO_ROS_PACKAGE_PATH=/opt/qbo/ros_stacks
+source /opt/qbo/setup_ros_stacks.sh
+
+# Carry out specific functions when asked to by the system
+case "$1" in
+  start)
+
+    echo "Starting QBO_ROS Start Up script "
+	
+
+   sleep 1
+ 
+    #Wait for pulseaudio daemon
+    echo "Waiting for pulse audio daemon"
+    
+    su -c "/usr/bin/pulseaudio --kill" qbotest
+    su -c "/usr/bin/pulseaudio --start" qbotest
+    su -c "/usr/bin/pulseaudio --check" qbotest
+    PA=$?
+    while [ $PA -ne 0 ]; do
+       echo "Pulse audio check: " $PA > /dev/tty8 
+       sleep 1
+       su -c "/usr/bin/pulseaudio --check" qbotest
+       PA=$?
+    done
+ 
+    
+	echo "Launching QBO base"
+
+  su -c "roslaunch qbo_launchers qbo_startup.launch" -m `ls /home | awk 'NR==1{print $1}'`  > /dev/tty8 2>/dev/tty9 &
+
+    ;;
+  stop)
+    echo "Stopping QBO_ROS Start Up script"
+	
+
+    #killall nodes
+    for i in $( rosnode list ); do
+    rosnode kill $i;
+    done
+
+    #stop roscore
+    kill `ps -ax | egrep electric | egrep -o -E \^\ ?[0-9]+\ ` # | cut -d \  -f2-`
+
+
+	;;
+  *)
+    echo "Usage: /etc/init.d/qbo_start_service {start|stop}"
+    exit 1
+    ;;
+esac
+
+exit 0

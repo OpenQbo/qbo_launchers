@@ -1,0 +1,6 @@
+<launch>
+	<group ns="qbo_base">
+	       <node pkg="qbo_web_api" name="qbo_web_api" type="qbo_web_api.py" output="screen"/>
+	       <node pkg="web_cam_server" name="web_cam_server" type="camServer.py"/>
+	</group>
+</launch>

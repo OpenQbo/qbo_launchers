@@ -1,0 +1,2 @@
+#!/bin/bash
+update-rc.d -f  qbo_start_service remove

@@ -1,0 +1,7 @@
+<launch>
+  <master auto="start" />
+
+  <include file="$(find qbo_arduqbo)/launch/qbo.launch" />
+  <include file="$(find usb_camera)/launch/usb_cameras.launch" />
+
+</launch>
