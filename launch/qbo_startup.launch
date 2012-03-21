@@ -1,7 +1,7 @@
 <launch>
     <master auto="start" />
-    <include file="$(find qbo_arduqbo)/launch/qbo_with_sensors.launch" />
-    <include file="$(find qbo_camera)/launch/stereo_node.launch" />
+    <include file="$(find qbo_arduqbo)/launch/qbo_with_sensors.launch" /> 
+    <include file="$(find qbo_camera)/launch/qbo_stereo_node.launch" />
     <include file="$(find qbo_listen)/launch/voice_recognizer.launch" />
     <node pkg="qbo_talk" name="qbo_talk" type="festival_node.py" output="screen"/>
     <node pkg="qbo_brain"  name="qbo_brain"      type="qbo_brain.py" output="screen" />
