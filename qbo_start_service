@@ -7,7 +7,7 @@
 source /opt/ros/electric/setup.bash
 source /opt/ros/electric/ros/tools/rosbash/rosbash
 
-export ROS_HOSTNAME=`/bin/hostname`.local
+export ROS_HOSTNAME=`/bin/hostname`
 LOCALUSER=`ls /home | awk 'NR==1{print $1}'`
 
 # Carry out specific functions when asked to by the system
